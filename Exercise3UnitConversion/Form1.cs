@@ -16,5 +16,21 @@ namespace Exercise3UnitConversion
         {
             InitializeComponent();
         }
+
+        private void lbsBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void convertButton_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(lbsBox.Text))
+            {
+                double lbsInt = double.Parse(lbsBox.Text);
+                double toKilo = lbsInt * 0.453592;
+                string kiloString = toKilo.ToString();
+                kiloBox.Text = kiloString;
+            }
+        }
     }
 }
