@@ -24,12 +24,23 @@ namespace Exercise3UnitConversion
 
         private void convertButton_Click(object sender, EventArgs e)
         {
+            errorMessage.Visible = false;
+
             if (!String.IsNullOrWhiteSpace(lbsBox.Text))
             {
-                double lbsInt = double.Parse(lbsBox.Text);
-                double toKilo = lbsInt * 0.453592;
-                string kiloString = toKilo.ToString();
-                kiloBox.Text = kiloString;
+                double lbsInt = 0.0;
+                if (double.TryParse(lbsBox.Text, out lbsInt) == true)
+                {
+                    lbsInt = double.Parse(lbsBox.Text);
+                    double toKilo = Math.Round((lbsInt * 0.453592), 3);
+                    string kiloString = toKilo.ToString();
+                    kiloBox.Text = kiloString;
+                }
+                else
+                {
+                    errorMessage.Visible = true;
+                    kiloBox.Text = "";
+                }
             }
         }
     }
